@@ -148,6 +148,10 @@
             // LBoxHobbi
             // 
             this.LBoxHobbi.FormattingEnabled = true;
+            this.LBoxHobbi.Items.AddRange(new object[] {
+            "foci",
+            "bicikli",
+            "röplabda"});
             this.LBoxHobbi.Location = new System.Drawing.Point(481, 67);
             this.LBoxHobbi.Name = "LBoxHobbi";
             this.LBoxHobbi.Size = new System.Drawing.Size(120, 95);

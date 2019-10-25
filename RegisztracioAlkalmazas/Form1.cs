@@ -31,7 +31,7 @@ namespace RegisztracioAlkalmazas
         {
             saveFileDialog1.ShowDialog();
         }
-
+        
        private void btnBeltolt_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
@@ -77,6 +77,16 @@ namespace RegisztracioAlkalmazas
             {
                 using (var sw = new StreamWriter(saveFileDialog1.FileName))
                 {
+                    sw.WriteLine(tBoxNev.Text);
+                    sw.WriteLine(tBoxSzulDatum.Text);
+                    if(rBttnFerfi.Checked)
+                    {
+                        sw.WriteLine("Férfi");
+                    }
+                    else
+                    {
+                        sw.WriteLine("Nő");
+                    }
                     foreach (var item in LBoxHobbi.Items)
                     {
                         sw.WriteLine(item);
@@ -96,6 +106,18 @@ namespace RegisztracioAlkalmazas
             {
                 using (var sr = new StreamReader(openFileDialog1.FileName))
                 {
+                    tBoxNev.Text=sr.ReadLine();
+                    tBoxSzulDatum.Text = sr.ReadLine();
+                    if (sr.ReadLine()=="Férfi")
+                    {
+                        rBttnFerfi.Checked=true;
+                        rBtnNo.Checked = false;
+                    }
+                    else
+                    {
+                        rBttnFerfi.Checked = false;
+                        rBtnNo.Checked = true;
+                    }
                     LBoxHobbi.Items.Clear();
                     while (!sr.EndOfStream)
                     {
